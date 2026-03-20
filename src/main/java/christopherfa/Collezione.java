@@ -47,6 +47,32 @@ public class Collezione {
                 .collect(Collectors.toList());
     }
 
+    // rimozione per id
+    public void rimuovi(String id) {
+        boolean rimosso = inventario.removeIf(g -> g.id.equalsIgnoreCase(id));
+        if (!rimosso) {
+            throw new IllegalArgumentException("Nessun gioco con ID: " + id);
+        }
+    }
+
+    // aggiornamento per id
+    public void aggiorna(String id, Gioco nuovo) {
+        if (!nuovo.id.equalsIgnoreCase(id)) {
+            throw new IllegalArgumentException("L'ID del nuovo gioco deve coincidere con quello da aggiornare.");
+        }
+        int idx = -1;
+        for (int i = 0; i < inventario.size(); i++) {
+            if (inventario.get(i).id.equalsIgnoreCase(id)) {
+                idx = i;
+                break;
+            }
+        }
+        if (idx == -1) {
+            throw new IllegalArgumentException("Nessun gioco con ID: " + id);
+        }
+        inventario.set(idx, nuovo);
+    }
+
     // stats
     public void statistiche() {
         if (inventario.isEmpty()) {

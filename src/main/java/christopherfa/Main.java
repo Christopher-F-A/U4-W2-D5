@@ -28,9 +28,13 @@ public class Main {
         System.out.println("\nGIOCHI DA TAVOLO PER 6 GIOCATORI");
         c.cercaPerGiocatori(6).forEach(System.out::println);
 
-        //+aggiornamento
+        System.out.println("\nRIMUOVI T2");
+        c.rimuovi("T2");
+        c.stampa();
 
-        //+rimozione
+        System.out.println("\nAGGIORNA V1");
+        c.aggiorna("V1", new Videogioco("V1", "Elden Ring 1.1", 2023, 39.90, "PC", 150, "RPG"));
+        c.stampa();
 
         c.statistiche();
 
