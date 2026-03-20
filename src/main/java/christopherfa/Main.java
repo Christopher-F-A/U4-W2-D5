@@ -3,7 +3,7 @@ package christopherfa;
 public class Main {
     public static void main(String[] args) {
 
-        Collezione c = new Collezione(10);
+        Collezione c = new Collezione();
         c.add(new Videogioco("V1", "Elden Ring1", 2022, 59.90, "PC", 100, "RPG"));
         c.add(new Videogioco("V2", "Elden Ring2", 2023, 69.90, "Playstation", 200, "ACTION"));
         c.add(new Videogioco("V3", "Elden Ring3", 2024, 79.90, "Xbox", 300, "SPORT"));
@@ -14,9 +14,39 @@ public class Main {
         c.add(new GiocoDaTavolo("T2", "Risiko2", 1958, 36.0, 6, 130));
         c.add(new GiocoDaTavolo("T3", "Risiko3", 1959, 37.0, 6, 140));
         c.add(new GiocoDaTavolo("T4", "Risiko4", 1960, 38.0, 6, 150));
-        c.add(new GiocoDaTavolo("T5", "Risiko5", 1961, 39.0, 6, 160));// test, non visibile nella collezione e comunica spazio esaurito
+        c.add(new GiocoDaTavolo("T5", "Risiko5", 1961, 39.0, 6, 160));
         c.add(new GiocoDaTavolo("T6", "Risiko6", 1962, 40.0, 6, 170));
-        c.stampa();}
+        System.out.println("STAMPA COLLEZIONE");
+        c.stampa();
 
+        System.out.println("\nCERCA ID V1");
+        System.out.println(c.cercaPerId("V1"));
+
+        System.out.println("\nGIOCHI SOTTO 60€");
+        c.cercaPerPrezzo(60).forEach(System.out::println);
+
+        System.out.println("\nGIOCHI DA TAVOLO PER 6 GIOCATORI");
+        c.cercaPerGiocatori(6).forEach(System.out::println);
+
+        //+aggiornamento
+
+        //+rimozione
+
+        c.statistiche();
+
+        // duplicato
+        try {
+            c.add(new Videogioco("V2", "Duplicato", 2020, 10.0, "PC", 1, "RPG"));
+        } catch (IllegalArgumentException e) {
+            System.out.println("ECCEZIONE ATTESA " + e.getMessage());
+        }
+
+        // ID non trovato
+        try {
+            c.cercaPerId("INESISTENTE");
+        } catch (IllegalArgumentException e) {
+            System.out.println("ECCEZIONE ATTESA " + e.getMessage());
+        }
+    }
 }
 

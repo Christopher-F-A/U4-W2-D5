@@ -17,4 +17,6 @@ public abstract class Gioco {
     public String toString() {
         return id + " | " + titolo + " (" + anno + ") | " + prezzo + "€";
     }
+
+
 }

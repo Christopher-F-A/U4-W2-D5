@@ -1,7 +1,7 @@
 package christopherfa;
 
 public class GiocoDaTavolo extends Gioco {
-    private int numGiocatori;
+    protected int numGiocatori;
     private int durataMedia;
 
     public GiocoDaTavolo(String id, String titolo, int anno, double prezzo, int numGiocatori, int durataMedia) {
@@ -12,6 +12,10 @@ public class GiocoDaTavolo extends Gioco {
         else this.numGiocatori = numGiocatori;
 
         this.durataMedia = durataMedia;
+    }
+
+    public int getNumGiocatori() {
+        return numGiocatori;
     }
 
     @Override
